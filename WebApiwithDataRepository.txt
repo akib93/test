@@ -1,0 +1,33 @@
+1. Create a web api with web application with Indivisual 
+2. Create a Model Class on Model Foler Name is 'Trainee'
+3. Modify Database Name on Web.Config
+4. Set Trainee Class with Dbset in IdentityModels 
+5. Enable-Migrations, Add-Migration, Update-Database 
+6. Right Click on the project and Install a package Exect name is : 
+Unity.WepApi.5.1  (Version 5.2.0) for UnityConfig.cs on AppStart folder 
+Never install only Unity.WepApi
+7. Create a folder on Model Folder Name is Repository and Add an Interface
+Name is : IDataAccessRepository (it is Generic Type )
+input Method Singniture like as : 
+    public interface IDataAccessRepository <TEntity,in TPrimaryKey> where TEntity:class
+    {
+        IEnumerable<TEntity> Get();
+        TEntity Get(TPrimaryKey id);
+        void Post(TEntity entity);
+        void Put(TPrimaryKey id, TEntity entity);
+        void Delete(TPrimaryKey id);
+    }
+
+8. Create a Class on Repositor Folder Name is: ClsTraineeDataAccessRepository
+and Inherit Interface was name  IDataAccessRepository
+9. open Global.asax and 
+    UnityConfig.RegisterComponents();  
+10. Open UnityConfig File 
+
+
+
+container.RegisterType<IDataAccessRepository<Trainee, int>, ClsTraineeDataAccessRepository>();
+
+11. Create a Controller Name is TraineeApiController (Must Empty)
+12. Implement the code and Rebuild 
+13. Check it on Post Man
